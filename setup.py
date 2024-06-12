@@ -45,7 +45,9 @@ def get_extensions():
     if sys.platform == "win32":
         define_macros += [("gsplat_EXPORTS", None)]
 
-    extra_compile_args = {"cxx": ["-O3"]}
+        extra_compile_args = {"cxx": ["/Ox"]}
+    else:
+        extra_compile_args = {"cxx": ["-O3"]}
     if not os.name == "nt":  # Not on Windows:
         extra_compile_args["cxx"] += ["-Wno-sign-compare"]
     extra_link_args = [] if WITH_SYMBOLS else ["-s"]
